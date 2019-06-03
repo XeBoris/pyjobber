@@ -17,5 +17,8 @@ Installation
 * Start to write your own modules (just have a look at the ExampleModule and don't forget to get the argparser inputs right)
 * Contribution is welcome
 
-Acknowledge:
+Hints:
+------------
 * No guarantee for successful job execution!
+* There is much room for improvement!
+* Don't forget to mention me if you like and use it :)
