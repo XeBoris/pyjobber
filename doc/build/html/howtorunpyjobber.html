@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>How to run pyjobber &#8212; pyjobber 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="how-to-run-pyjobber">
+<h1>How to run pyjobber<a class="headerlink" href="#how-to-run-pyjobber" title="Permalink to this headline">¶</a></h1>
+<p>Pyjobber uses argparse to cast several command line commands into pyjobber.</p>
+<div class="section" id="list-modules">
+<h2>List modules<a class="headerlink" href="#list-modules" title="Permalink to this headline">¶</a></h2>
+<p>After pyjobber is installed (e.g. with your new task), you can get a list modules by simply running pyjobber without any commands.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>~/<span class="o">]</span>$ pyjobber
+INFO:Run the Jobber
+WARNING:Select from a list of modules:
+WARNING:-&gt; ExampleModule
+WARNING:-&gt; ScratchLoader
+</pre></div>
+</div>
+<p>To run a specific module it is enough to select it in advance:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>~/<span class="o">]</span>$ pyjobber ExampleModule
+</pre></div>
+</div>
+<p>You can get any time a help overview (–help)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>~/<span class="o">]</span>$ pyjobber ExampleModule --help
+</pre></div>
+</div>
+<p>If you have a specific pyjobber adjustment it is suggested to move your argparse evulation into each module instead of the pyjobber.py main() function.</p>
+<p>Last but not least, you can choose to parameter option how often a certain task should be executed:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>~/<span class="o">]</span>$ pyjobber ExampleModule --once
+</pre></div>
+</div>
+<p>The option –once runs the task only once</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>~/<span class="o">]</span>$ pyjobber ExampleModule --sleep N
+</pre></div>
+</div>
+<p>The option –sleep N defines the sleep time between executing tasks continously.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">pyjobber</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Boris Bauermeister.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/howtorunpyjobber.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

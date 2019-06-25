@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>How to write your own task &#8212; pyjobber 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="How to run pyjobber" href="howtorunpyjobber.html" />
+    <link rel="prev" title="Introduction to Pyjobber" href="introduction.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="how-to-write-your-own-task">
+<h1>How to write your own task<a class="headerlink" href="#how-to-write-your-own-task" title="Permalink to this headline">¶</a></h1>
+<p>I will guide you through the basic concept of writing your own module in pyjobber to get your task done.</p>
+<div class="section" id="how-is-a-module-organized">
+<h2>How is a module organized?<a class="headerlink" href="#how-is-a-module-organized" title="Permalink to this headline">¶</a></h2>
+<p>Each module consist of a Python class which you can find in</p>
+<div class="line-block">
+<div class="line">pyjobber</div>
+<div class="line">│</div>
+<div class="line">├──pyjobber</div>
+<div class="line-block">
+<div class="line">│</div>
+<div class="line">├──interfaces</div>
+<div class="line">│   │</div>
+<div class="line">│   ├──decorator.py</div>
+<div class="line">│   ├──mongodb_interface.py</div>
+<div class="line">│   ├──your_interface.py</div>
+<div class="line">│</div>
+<div class="line">├──modules</div>
+<div class="line-block">
+<div class="line">│</div>
+<div class="line">├──example_module.py</div>
+<div class="line">├──your_task.py</div>
+</div>
+</div>
+</div>
+<p>The most straight forward way to build your module is to follow the example_module.py class. Each module looks like this:</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">your_task</span><span class="o">.</span><span class="n">py</span><span class="p">:</span>
+
+  <span class="kn">import</span> <span class="nn">logging</span>
+  <span class="kn">from</span> <span class="nn">pyjobber.interfaces.decorator</span> <span class="kn">import</span> <span class="n">Collector</span>
+  <span class="c1">#Further imports...</span>
+
+  <span class="nd">@Collector</span>
+  <span class="k">class</span> <span class="nc">YOURTASK</span><span class="p">():</span>
+      <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <span class="k">pass</span>
+<span class="hll">      <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arguments</span><span class="p">):</span>
+</span>          <span class="c1">#setup your module with arguments</span>
+          <span class="c1">#if not needed</span>
+<span class="hll">      <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arguments</span><span class="p">):</span>
+</span>          <span class="c1">#Run Execute your task</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">do_something</span><span class="p">()</span>
+<span class="hll">      <span class="k">def</span> <span class="nf">do_something</span><span class="p">()</span>
+</span>          <span class="c1">#more complicated tasks are going in that member function</span>
+</pre></div>
+</td></tr></table></div>
+<dl class="simple">
+<dt>The most important member functions are</dt><dd><ul class="simple">
+<li><p>__init__() - The Python constructor</p></li>
+<li><p>init() - Set up your module with arguments and define variables</p></li>
+<li><p>run()  - Execute your module. Run your calculations here and use further member functions if your workflow is more complicated</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="what-is-an-interface">
+<h2>What is an interface?<a class="headerlink" href="#what-is-an-interface" title="Permalink to this headline">¶</a></h2>
+<p>Each ETL has its own way to to communicate with files, databases or users and therefore it becomes important to write your interface class which matches the needs of your workflow and therefore your modules. Pyjobber comes with a simple interface for MongoDB database which is based on pymongo. Please check the code before going in production. The module is supposed to be an example.</p>
+<p>Feel free to run and add your interfaces to pyjobber if you start to contribute to the project. By default are not code structure requierements foreseen besides that the interface is supposed to be a class with a valid constructor.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">pyjobber</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction to Pyjobber</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How to write your own task</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-is-a-module-organized">How is a module organized?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-an-interface">What is an interface?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="howtorunpyjobber.html">How to run pyjobber</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="introduction.html" title="previous chapter">Introduction to Pyjobber</a></li>
+      <li>Next: <a href="howtorunpyjobber.html" title="next chapter">How to run pyjobber</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Boris Bauermeister.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/howtowriteoyourtask.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
