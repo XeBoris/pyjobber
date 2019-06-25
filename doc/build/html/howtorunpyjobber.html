@@ -14,6 +14,8 @@
     <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributing" href="contribute.html" />
+    <link rel="prev" title="How to write your own task" href="howtowriteoyourtask.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -43,14 +45,23 @@ WARNING:-&gt; ExampleModule
 WARNING:-&gt; ScratchLoader
 </pre></div>
 </div>
+</div>
+<div class="section" id="run-a-module">
+<h2>Run a Module<a class="headerlink" href="#run-a-module" title="Permalink to this headline">¶</a></h2>
 <p>To run a specific module it is enough to select it in advance:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>~/<span class="o">]</span>$ pyjobber ExampleModule
 </pre></div>
 </div>
+</div>
+<div class="section" id="run-the-help">
+<h2>Run the help<a class="headerlink" href="#run-the-help" title="Permalink to this headline">¶</a></h2>
 <p>You can get any time a help overview (–help)</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>~/<span class="o">]</span>$ pyjobber ExampleModule --help
 </pre></div>
 </div>
+</div>
+<div class="section" id="run-your-pyjobber">
+<h2>Run your Pyjobber<a class="headerlink" href="#run-your-pyjobber" title="Permalink to this headline">¶</a></h2>
 <p>If you have a specific pyjobber adjustment it is suggested to move your argparse evulation into each module instead of the pyjobber.py main() function.</p>
 <p>Last but not least, you can choose to parameter option how often a certain task should be executed:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>~/<span class="o">]</span>$ pyjobber ExampleModule --once
@@ -61,6 +72,11 @@ WARNING:-&gt; ScratchLoader
 </pre></div>
 </div>
 <p>The option –sleep N defines the sleep time between executing tasks continously.</p>
+</div>
+<div class="section" id="run-pyjobber-tasks-as-python-package">
+<h2>Run Pyjobber Tasks as Python Package<a class="headerlink" href="#run-pyjobber-tasks-as-python-package" title="Permalink to this headline">¶</a></h2>
+<p>With the installation of Pyjobber there comes a package which you can easily import into different Python project. Here comes a quick example how to setup and run an example task from a Python terminal.</p>
+<p>#ToDo: Some better description how to run pyjobber as a package</p>
 </div>
 </div>
 
@@ -81,11 +97,28 @@ WARNING:-&gt; ScratchLoader
 
 
 <h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction to Pyjobber</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation of Pyjobber</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtowriteoyourtask.html">How to write your own task</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How to run pyjobber</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#list-modules">List modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-a-module">Run a Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-the-help">Run the help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-your-pyjobber">Run your Pyjobber</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-pyjobber-tasks-as-python-package">Run Pyjobber Tasks as Python Package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Credits</a></li>
+</ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="howtowriteoyourtask.html" title="previous chapter">How to write your own task</a></li>
+      <li>Next: <a href="contribute.html" title="next chapter">Contributing</a></li>
   </ul></li>
 </ul>
 </div>

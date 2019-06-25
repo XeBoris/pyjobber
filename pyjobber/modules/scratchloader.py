@@ -7,11 +7,12 @@ import numpy
 from pyjobber.interfaces.decorator import Collector
 from pyjobber.interfaces.mongodb_interface import MongoDBapi
 
+
 @Collector
 class ScratchLoader(MongoDBapi):
 
     def __init__(self):
-        #define a list of necessary arguments beforehand:
+        # define a list of necessary arguments beforehand:
         self.list_arguments = {'scratch': {'type': str, 'default': "./"}}
         self.def_arguments = {}
         self.init_arguments = False
@@ -30,12 +31,13 @@ class ScratchLoader(MongoDBapi):
 
     def run(self):
         if self.init_arguments == False:
-            return 1 #not ok!
+            return 1  # not ok!
 
-        self.path = os.path.split(self.def_arguments['scratch'])[0]    #use everything before the last / (win/linux conform)
+        # use everything before the last / (win/linux conform)
+        self.path = os.path.split(self.def_arguments['scratch'])[0]
         self.base = os.path.split(self.path)[0]
 
-        #Run an initial connect for the MongoDB interface:
+        # Run an initial connect for the MongoDB interface:
         self.db = MongoDBapi()
         self.db.connect()
 
@@ -45,11 +47,12 @@ class ScratchLoader(MongoDBapi):
         # here we go:
         self.load_path()
 
-        #return 0 if you reach this point.
+        # return 0 if you reach this point.
         return 0
 
     def init_archiv_path(self):
-        self.archive_folder = "{0}_archive".format(os.path.basename(os.path.normpath(self.path)))
+        self.archive_folder = "{0}_archive".format(
+            os.path.basename(os.path.normpath(self.path)))
         if not os.path.exists(os.path.join(self.base, self.archive_folder)):
             os.makedirs(os.path.join(self.base, self.archive_folder))
 
@@ -59,11 +62,11 @@ class ScratchLoader(MongoDBapi):
         os.rename(old_p, new_p)
 
     def data_massage(self, df):
-        #this code might be sorted into another class later
-        #Aim: clean data, correct for types from csv files and deal with
+        # this code might be sorted into another class later
+        # Aim: clean data, correct for types from csv files and deal with
         #     missing data
 
-        #attention! Assuming pre knowledge about types here!
+        # attention! Assuming pre knowledge about types here!
 
         dk = json.loads(df['content'])
         for ik in dk:
@@ -81,7 +84,7 @@ class ScratchLoader(MongoDBapi):
         return df
 
     def load_path(self):
-        ### Assume no corruption
+        # Assume no corruption
 
         for r, d, f in os.walk(self.path):
             # simple check to exclude hidden folders
@@ -98,25 +101,26 @@ class ScratchLoader(MongoDBapi):
                 dc_temp['date'] = None
                 dc_temp['content'] = []
 
-                #Analyse csv files along the input path (self.path)
+                # Analyse csv files along the input path (self.path)
                 if '.csv' in file:
                     f_csv = open(os.path.join(r, file), 'rU')
-                    reader = csv.DictReader( f_csv, delimiter=',')
+                    reader = csv.DictReader(f_csv, delimiter=',')
                     reader_json = json.dumps([row for row in reader])
-                    #define filename and date independent in case we want to change
-                    #the file names later (important: date information must come from
-                    #file name
+                    # define filename and date independent in case we want to change
+                    # the file names later (important: date information must come from
+                    # file name
                     dc_temp['filename'] = file
-                    dc_temp['date'] = datetime.datetime.strptime(file.split("/")[-1].split(".")[0], '%Y-%m-%d')
+                    dc_temp['date'] = datetime.datetime.strptime(
+                        file.split("/")[-1].split(".")[0], '%Y-%m-%d')
                     dc_temp['content'] = reader_json
 
                     dc_temp_old = copy.deepcopy(dc_temp)
                     dc_temp = self.data_massage(dc_temp)
 
-
-                    #decide if we add these data to our database:
+                    # decide if we add these data to our database:
                     try:
-                        db_find_filename = list(self.db.find_one(dc_temp))[0]['filename']
+                        db_find_filename = list(self.db.find_one(dc_temp))[
+                            0]['filename']
                     except:
                         db_find_filename = None
 
@@ -128,11 +132,9 @@ class ScratchLoader(MongoDBapi):
                         self.archiver(file)
 
                     else:
-                        print("Not in the db: ", dc_temp['filename'], " -> Add it")
+                        print("Not in the db: ",
+                              dc_temp['filename'], " -> Add it")
                         self.db.insert(dc_temp)
-
 
         print("Read:")
         self.db.read_all()
-
-

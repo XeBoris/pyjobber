@@ -12,11 +12,12 @@ Contents:
    :maxdepth: 2
    
    introduction
+   install
    howtowriteoyourtask
    howtorunpyjobber
    contribute
-..    ../../AUTHORS
-
+   authors
+   history
 
 Indices and tables
 ==================

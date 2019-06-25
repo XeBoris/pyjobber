@@ -60,3 +60,7 @@ What is an interface?
 Each ETL has its own way to to communicate with files, databases or users and therefore it becomes important to write your interface class which matches the needs of your workflow and therefore your modules. Pyjobber comes with a simple interface for MongoDB database which is based on pymongo. Please check the code before going in production. The module is supposed to be an example.
 
 Feel free to run and add your interfaces to pyjobber if you start to contribute to the project. By default are not code structure requierements foreseen besides that the interface is supposed to be a class with a valid constructor.
+
+Module/Interface Compile
+------------------------
+Pyjobber is only a very simple ETL workflow manager and therefore you can get your new task working by simply install pyjobber in your Python environment. For installation help watch out here (:ref:'_Installation')
