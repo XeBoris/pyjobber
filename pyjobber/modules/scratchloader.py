@@ -1,3 +1,12 @@
+"""
+.. module:: scratchloader
+   :platform: Unix
+   :synopsis: Read csv data in and write them to a database
+
+.. moduleauthor:: Boris Bauermeister <Boris.Bauermeister@gmail.com>
+
+"""
+
 import os
 import csv
 import json

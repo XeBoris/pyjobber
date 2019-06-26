@@ -18,6 +18,8 @@ Contents:
    contribute
    authors
    history
+   description_modules
+   description_interfaces
 
 Indices and tables
 ==================

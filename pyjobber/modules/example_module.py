@@ -1,3 +1,12 @@
+"""
+.. module:: example_module
+   :platform: Unix
+   :synopsis: An example module to show how a basic module is designed
+
+.. moduleauthor:: Boris Bauermeister <Boris.Bauermeister@gmail.com>
+
+"""
+
 import logging
 from pyjobber.interfaces.decorator import Collector
 

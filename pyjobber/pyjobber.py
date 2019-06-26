@@ -1,4 +1,10 @@
 # -*- coding: utf-8 -*-
+"""Pyjobber
+
+Author: Boris Bauermeister
+Email: Boris.Bauermeister@gmail.com
+"""
+
 import argparse
 import time
 import logging

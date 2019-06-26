@@ -1,7 +1,19 @@
+"""
+.. module:: mongodb_interface
+   :platform: Unix
+   :synopsis: A simple mongodb interface to wrap pymongo calls
+
+.. moduleauthor:: Boris Bauermeister <Boris.Bauermeister@gmail.com>
+
+
+"""
 import pymongo
 
 
 class MongoDBapi():
+    """MongoDBapi()
+    
+    """
     def __init__(self):
         """MongoDBapi:__init__()
 
